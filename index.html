@@ -2,76 +2,93 @@
 <html lang="pt-br">
 
 <head>
+  <!-- Define a codificação de caracteres para o documento -->
   <meta charset="UTF-8">
+  <!-- Define a viewport para dispositivos móveis, garantindo uma boa visualização em diferentes tamanhos de tela -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Define o título da página que será exibido na aba do navegador -->
   <title>Perfil Interativo</title>
+  <!-- Importa o arquivo CSS do Bootstrap para estilização da página -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
   <style>
+    /* Estilos gerais para o corpo da página */
     body {
-      background-color: #f4f7fa;
-      font-family: 'Arial', sans-serif;
+      background-color: #f4f7fa; /* Cor de fundo clara */
+      font-family: 'Arial', sans-serif; /* Fonte do corpo */
     }
 
+    /* Define o tamanho máximo da largura do container */
     .container {
       max-width: 800px;
     }
 
+    /* Estilo do cartão que contém o perfil */
     .card {
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 15px; /* Bordas arredondadas */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
     }
 
+    /* Adiciona padding dentro do corpo do cartão */
     .card-body {
       padding: 2rem;
     }
 
+    /* Estilo do título dentro do cartão */
     .card h3 {
-      font-weight: 600;
-      color: #333;
+      font-weight: 600; /* Define o peso da fonte */
+      color: #333; /* Cor escura para o título */
     }
 
+    /* Estilo do parágrafo dentro do cartão */
     .card p {
-      color: #666;
+      color: #666; /* Cor de texto mais clara */
     }
 
+    /* Estilos para os botões, tornando-os arredondados */
     .btn {
-      border-radius: 25px;
-      padding: 8px 20px;
-      font-weight: 600;
+      border-radius: 25px; /* Bordas arredondadas */
+      padding: 8px 20px; /* Define o padding */
+      font-weight: 600; /* Peso da fonte */
     }
 
+    /* Estilos para os botões, definindo animações ao passar o mouse */
     .btn-info, .btn-secondary, .btn-primary, .btn-success, .btn-warning {
-      transition: all 0.3s ease;
+      transition: all 0.3s ease; /* Transição suave */
     }
 
+    /* Efeito de aumento ao passar o mouse sobre os botões */
     .btn-info:hover, .btn-secondary:hover, .btn-primary:hover, .btn-success:hover, .btn-warning:hover {
-      transform: scale(1.05);
+      transform: scale(1.05); /* Aumenta o tamanho do botão ao passar o mouse */
     }
 
+    /* Estilos para a imagem do perfil */
     .img-profile {
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 50%;
-      cursor: pointer;
+      width: 150px; /* Largura da imagem */
+      height: 150px; /* Altura da imagem */
+      object-fit: cover; /* Faz a imagem cobrir toda a área sem distorção */
+      border-radius: 50%; /* Deixa a imagem redonda */
+      cursor: pointer; /* Cursor de ponteiro ao passar o mouse sobre a imagem */
     }
 
+    /* Contêiner da imagem, para posicionamento relativo */
     .img-container {
       position: relative;
       display: inline-block;
     }
 
+    /* Descrição da imagem posicionada abaixo */
     .image-description {
       position: absolute;
-      bottom: 10px;
+      bottom: 10px; /* Posiciona no fundo da imagem */
       left: 0;
       right: 0;
-      text-align: center;
-      color: #fff;
-      font-weight: 600;
-      font-size: 1.2rem;
-      background-color: rgba(0, 0, 0, 0.5);
-      border-radius: 50%;
+      text-align: center; /* Alinha o texto ao centro */
+      color: #fff; /* Cor do texto */
+      font-weight: 600; /* Peso da fonte */
+      font-size: 1.2rem; /* Tamanho da fonte */
+      background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro semi-transparente */
+      border-radius: 50%; /* Forma circular para o fundo */
       padding: 5px;
       width: 100%;
     }
@@ -79,20 +96,27 @@
 </head>
 
 <body>
+  <!-- Contêiner principal do perfil -->
   <div class="container mt-5">
     <div class="card">
       <div class="card-body text-center">
+        <!-- Contêiner para a imagem de perfil -->
         <div class="img-container">
+          <!-- Imagem de perfil com eventos de mouse para troca de imagem -->
           <img src="foto/maria.jpg" alt="Imagem de Perfil" id="profile-image" class="img-profile"
             onmouseover="trocarFoto('foto/joao.jpg')" onmouseout="voltarFoto('foto/maria.jpg')">
           <div class="image-description">Passe o mouse para mudar</div>
         </div>
+        <!-- Nome do perfil -->
         <h3 id="profile-name">Nome: Meu Perfil</h3>
+        <!-- Idade do perfil -->
         <p id="profile-age">Idade: 18</p>
         <h5>Hobbies:</h5>
+        <!-- Lista de hobbies do perfil -->
         <ul id="hobbies-list" class="list-group mb-3">
           <li class="list-group-item d-flex justify-content-between align-items-center">
             Leitura
+            <!-- Botão para excluir hobby -->
             <button class="btn btn-danger btn-sm" onclick="removerHobby(this)">Excluir</button>
           </li>
           <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -104,6 +128,7 @@
             <button class="btn btn-danger btn-sm" onclick="removerHobby(this)">Excluir</button>
           </li>
         </ul>
+        <!-- Botões para interagir com o perfil -->
         <button class="btn btn-primary me-2" onclick="alterarNome()">Alterar Nome</button>
         <button class="btn btn-success me-2" onclick="adicionarHobby()">Adicionar Hobby</button>
         <button class="btn btn-warning me-2" onclick="mudarCor()">Mudar Cor</button>
@@ -116,70 +141,78 @@
   </div>
 
   <script>
+    // Função para alterar o nome do perfil
     function alterarNome() {
-      const novoNome = prompt("Digite o novo nome:");
-      if (novoNome) {
-        document.getElementById("profile-name").textContent = "Nome: " + novoNome;
+      const novoNome = prompt("Digite o novo nome:"); // Solicita o novo nome
+      if (novoNome) { // Se o nome for informado
+        document.getElementById("profile-name").textContent = "Nome: " + novoNome; // Altera o nome no HTML
       }
     }
 
+    // Função para adicionar um novo hobby
     function adicionarHobby() {
-      const novoHobby = prompt("Digite um novo hobby:");
-      if (novoHobby) {
-        const li = document.createElement("li");
-        li.className = "list-group-item d-flex justify-content-between align-items-center";
-        li.textContent = novoHobby;
+      const novoHobby = prompt("Digite um novo hobby:"); // Solicita um novo hobby
+      if (novoHobby) { // Se um hobby for informado
+        const li = document.createElement("li"); // Cria um novo item de lista
+        li.className = "list-group-item d-flex justify-content-between align-items-center"; // Estilo do item da lista
+        li.textContent = novoHobby; // Define o texto do hobby
 
-        const botaoExcluir = document.createElement("button");
-        botaoExcluir.className = "btn btn-danger btn-sm";
-        botaoExcluir.textContent = "Excluir";
+        const botaoExcluir = document.createElement("button"); // Cria o botão de excluir
+        botaoExcluir.className = "btn btn-danger btn-sm"; // Estilo do botão
+        botaoExcluir.textContent = "Excluir"; // Define o texto do botão
         botaoExcluir.onclick = function () {
-          removerHobby(botaoExcluir);
+          removerHobby(botaoExcluir); // Chama a função de remover hobby ao clicar
         };
 
-        li.appendChild(botaoExcluir);
-        document.getElementById("hobbies-list").appendChild(li);
+        li.appendChild(botaoExcluir); // Adiciona o botão ao item da lista
+        document.getElementById("hobbies-list").appendChild(li); // Adiciona o novo hobby à lista
       }
     }
 
+    // Função para remover um hobby
     function removerHobby(botao) {
-      const li = botao.parentNode;
-      li.remove();
+      const li = botao.parentNode; // Encontra o item da lista
+      li.remove(); // Remove o item da lista
     }
 
+    // Função para mudar a cor de fundo da página
     function mudarCor() {
-      const cores = ["#f8d7da", "#d1ecf1", "#d4edda", "#fff3cd", "#cce5ff"];
-      const corAleatoria = cores[Math.floor(Math.random() * cores.length)];
-      document.body.style.backgroundColor = corAleatoria;
+      const cores = ["#f8d7da", "#d1ecf1", "#d4edda", "#fff3cd", "#cce5ff"]; // Lista de cores
+      const corAleatoria = cores[Math.floor(Math.random() * cores.length)]; // Escolhe uma cor aleatória
+      document.body.style.backgroundColor = corAleatoria; // Aplica a cor de fundo
     }
 
+    // Função para trocar a foto de perfil
     function trocarFoto(foto) {
-      const profileImage = document.getElementById("profile-image");
-      profileImage.src = foto;
+      const profileImage = document.getElementById("profile-image"); // Obtém o elemento de imagem de perfil
+      profileImage.src = foto; // Altera a fonte da imagem
     }
 
+    // Função para voltar à foto original
     function voltarFoto(foto) {
-      const profileImage = document.getElementById("profile-image");
-      profileImage.src = foto;
+      const profileImage = document.getElementById("profile-image"); // Obtém o elemento de imagem de perfil
+      profileImage.src = foto; // Altera a fonte da imagem
     }
 
+    // Função para alterar a imagem de perfil com um novo link
     function alterarImagem() {
-      const novoLink = prompt("Digite o link da nova imagem de perfil:");
-      if (novoLink) {
-        const profileImage = document.getElementById("profile-image");
-        profileImage.src = novoLink;
+        const novoLink = prompt("Digite o link da nova imagem de perfil:"); // Solicita o link da nova imagem
+        if (novoLink) { // Se o link for informado
+          const profileImage = document.getElementById("profile-image"); // Obtém o elemento de imagem de perfil
+          profileImage.src = novoLink; // Altera a fonte da imagem com o novo link
+        }
       }
-    }
 
-    function alterarIdade() {
-      const novaIdade = prompt("Digite a nova idade:");
-      if (novaIdade && !isNaN(novaIdade) && novaIdade > 0) {
-        document.getElementById("profile-age").textContent = "Idade: " + novaIdade;
-      } else {
-        alert("Por favor, insira uma idade válida.");
+      // Função para alterar a idade do perfil
+      function alterarIdade() {
+        const novaIdade = prompt("Digite a nova idade:"); // Solicita a nova idade
+        if (novaIdade && !isNaN(novaIdade) && novaIdade > 0) { // Se a idade for um número válido e positivo
+          document.getElementById("profile-age").textContent = "Idade: " + novaIdade; // Atualiza a idade no HTML
+        } else {
+          alert("Por favor, insira uma idade válida."); // Exibe um alerta se a idade for inválida
+        }
       }
-    }
-  </script>
-</body>
+    </script>
+  </body>
 
 </html>
